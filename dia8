@@ -1,0 +1,38 @@
+
+import os # Essa função é utilizada para limpar o console, sendo assim o próximo não verá o lance do antecessor. 
+
+'''Foi criada uma função onde ela vai checar o maior valor dentro do dicionário e retornar o nome do responsável pelo lance
+e o valor que foi o lance. '''
+def maior_valor(dicionario_valor):
+    maior_valor1 = 0
+    ganhador = ''
+    for nome1 in dicionario_valor:
+        valor_do_lance = dicionario_valor[nome1]
+        if valor_do_lance > maior_valor1:
+            maior_valor1 = valor_do_lance
+            ganhador = nome1
+
+    print(f'O ganhador é {ganhador} com o lance de R$ {maior_valor1:.2f}.')
+
+lance = {} # Dicionario onde vai ser armazenado os nomes e valores 
+continuar = True
+print("Bem-vindo ao leilão silencioso.")
+
+''' Loop onde vai ser perguntado o nome do usuario é o valor que ele  deseja dar no lance '''
+
+while continuar:
+    nome = input('Digite o seu nome: ')
+    valor = float(input("Digite o valor do seu lance: "))
+    lance[nome] = valor
+    
+    # Limpa a tela (funciona apenas no Windows)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    lances = input("Você deseja dar outro lance? Digite 's' para continuar ou 'n' para finalizar o leilão: ").lower()
+    
+    if lances == 'n':
+        continuar = False
+        maior_valor(lance)
+
+    
+
